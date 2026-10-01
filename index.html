@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경희대학교 2026-2학기 학사 & 장학 캘린더 센터</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(180deg, #FFFFFF 0%, #F5F8FD 40%, #E8F0FE 100%);
+      --card-bg: #FFFFFF;
+      --card-border: #E3E8EF;
+      --text-main: #1F1F1F;
+      --text-sub: #444746;
+      --text-muted: #747775;
+      --gemini-primary: #0B57D0;
+      --gemini-hover: #0842A0;
+      --gemini-light-pill: #EDF2FA;
+      --gemini-light-border: #D3E3FD;
+      --tag-exam-bg: #FCE8E6;
+      --tag-exam-text: #C5221F;
+      --tag-scholarship-bg: #FEF7E0;
+      --tag-scholarship-text: #B06000;
+      --tag-academic-bg: #E8F0FE;
+      --tag-academic-text: #1967D2;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text-main);
+      font-family: 'Pretendard', 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      padding: 56px 0 24px;
+      text-align: center;
+    }
+
+    .gemini-sparkle-icon {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 16px;
+      display: block;
+      animation: floatIcon 3s ease-in-out infinite;
+    }
+
+    @keyframes floatIcon {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: #FFFFFF;
+      border: 1px solid var(--gemini-light-border);
+      color: var(--gemini-primary);
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(11, 87, 208, 0.08);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: var(--text-sub);
+      max-width: 620px;
+      margin: 0 auto 28px;
+      font-weight: 400;
+    }
+
+    /* Quick Explanation Box */
+    .sync-explain-box {
+      background: #FFFFFF;
+      border: 1px solid var(--gemini-light-border);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 16px rgba(11, 87, 208, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .sync-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gemini-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sync-desc {
+      font-size: 13.5px;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    /* Scholarship Banner */
+    .scholarship-banner {
+      background: #FFFFFF;
+      border: 1px solid var(--gemini-light-border);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 20px rgba(66, 133, 244, 0.06);
+    }
+    .banner-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .banner-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .banner-tag {
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: var(--tag-scholarship-bg);
+      color: var(--tag-scholarship-text);
+      font-weight: 700;
+      border: 1px solid #F9AB00;
+    }
+    .scholarship-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+    }
+    .scholarship-item {
+      background: var(--gemini-light-pill);
+      border: 1px solid #E1E8F5;
+      padding: 14px 16px;
+      border-radius: 14px;
+      transition: all 0.2s ease;
+    }
+    .scholarship-item:hover {
+      background: #E4ECF7;
+      transform: translateY(-2px);
+    }
+    .sch-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .sch-date {
+      font-size: 13px;
+      color: var(--gemini-primary);
+      font-weight: 600;
+    }
+    .sch-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Tabs */
+    .tabs-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 10px 20px;
+      border-radius: 9999px;
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      color: var(--text-sub);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .tab-btn:hover {
+      background: var(--gemini-light-pill);
+      color: var(--gemini-primary);
+    }
+    .tab-btn.active {
+      background: var(--gemini-primary);
+      color: #FFFFFF;
+      border-color: var(--gemini-primary);
+      box-shadow: 0 4px 12px rgba(11, 87, 208, 0.25);
+    }
+
+    /* Grade Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 22px;
+      margin-bottom: 40px;
+    }
+
+    .grade-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .grade-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(11, 87, 208, 0.1);
+      border-color: var(--gemini-light-border);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .grade-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .grade-badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      background: var(--gemini-light-pill);
+      color: var(--gemini-primary);
+      border: 1px solid var(--gemini-light-border);
+    }
+    .grade-desc {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-bottom: 20px;
+      min-height: 40px;
+    }
+
+    /* Buttons */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--gemini-primary);
+      color: #FFFFFF;
+      box-shadow: 0 3px 10px rgba(11, 87, 208, 0.2);
+    }
+    .btn-primary:hover {
+      background: var(--gemini-hover);
+      box-shadow: 0 4px 14px rgba(11, 87, 208, 0.35);
+    }
+    .btn-secondary {
+      background: #F0F4F9;
+      color: var(--text-main);
+      border: 1px solid #DDE3EA;
+    }
+    .btn-secondary:hover {
+      background: #E3EBF5;
+      border-color: #CCD7E6;
+    }
+
+    /* Event List */
+    .event-section-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #EEF1F4;
+      display: flex;
+      justify-content: space-between;
+    }
+    .event-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 320px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .event-list::-webkit-scrollbar {
+      width: 4px;
+    }
+    .event-list::-webkit-scrollbar-thumb {
+      background: #CCD2DB;
+      border-radius: 4px;
+    }
+
+    .event-item {
+      padding: 10px 12px;
+      background: #F9FAFB;
+      border-radius: 10px;
+      border-left: 3px solid var(--gemini-primary);
+      font-size: 13px;
+    }
+    .event-item.exam {
+      border-left-color: #EA4335;
+      background: #FFF8F7;
+    }
+    .event-item.scholarship {
+      border-left-color: #F9AB00;
+      background: #FEFBF0;
+    }
+    .event-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+    .event-date {
+      font-size: 11px;
+      color: var(--gemini-primary);
+      font-weight: 700;
+    }
+    .event-item.exam .event-date {
+      color: #C5221F;
+    }
+    .event-item.scholarship .event-date {
+      color: #B06000;
+    }
+    .event-pill {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #E8F0FE;
+      color: #1967D2;
+    }
+    .event-item.exam .event-pill {
+      background: #FCE8E6;
+      color: #C5221F;
+    }
+    .event-item.scholarship .event-pill {
+      background: #FEF7E0;
+      color: #B06000;
+    }
+    .event-name {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    /* Guide Section */
+    .guide-card {
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    }
+    .guide-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      text-align: left;
+    }
+    .guide-item {
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+    .guide-item strong {
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #1F1F1F;
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <svg class="gemini-sparkle-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24 4C24 15.0457 15.0457 24 4 24C15.0457 24 24 32.9543 24 44C24 32.9543 32.9543 24 44 24C32.9543 24 24 15.0457 24 4Z" fill="url(#sparkle-gradient)"/>
+        <defs>
+          <linearGradient id="sparkle-gradient" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4285F4"/>
+            <stop offset="0.35" stop-color="#9B72CF"/>
+            <stop offset="0.7" stop-color="#D96570"/>
+            <stop offset="1" stop-color="#F2994A"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="badge">경희대학교 스마트 학사·장학 센터</div>
+      <h1>2026-2학기 캘린더 원클릭 구독</h1>
+      <p class="subtitle">전 학년 공통 시험(중간·기말고사) 및 학년별 맞춤 일정이 모두 포함되어 있습니다.</p>
+    </header>
+
+    <!-- Sync Explanation Box -->
+    <div class="sync-explain-box">
+      <div class="sync-title">💡 캘린더 추가 시 모든 일정이 정상적으로 들어가나요?</div>
+      <div class="sync-desc">
+        <strong>1. iCal (.ics) 파일로 저장 버튼</strong>: 누르면 <strong>중간고사, 기말고사, 성적공시, 개강, 점프장학금 등 모든 일정 30여 개가 1초 만에 100% 등록</strong>됩니다. (아이폰, 갤럭시, PC 모두 바로 사용 가능!)<br>
+        <strong>2. Google 캘린더에 바로 추가 링크</strong>: 캘린더를 실시간으로 '구독'하는 링크입니다. 관리자 구글 캘린더에 일괄 등록된 일정이 학생들의 캘린더에도 그대로 동기화됩니다.
+      </div>
+    </div>
+
+    <!-- Scholarship Notice Banner -->
+    <div class="scholarship-banner">
+      <div class="banner-header">
+        <div class="banner-title">
+          <span>✨ 8~10월 핵심 장학금 신청 안내</span>
+        </div>
+        <span class="banner-tag">인포21 계좌등록 필수</span>
+      </div>
+      <div class="scholarship-grid">
+        <div class="scholarship-item">
+          <div class="sch-name">점프장학금 <span style="color:#B3261E; font-size:11px;">🔥D-Day</span></div>
+          <div class="sch-date">09.21(월) ~ 10.09(금)</div>
+          <div class="sch-sub">인포21 장학신청 (9.22~10.09)</div>
+        </div>
+        <div class="scholarship-item">
+          <div class="sch-name">우정장학 (학업장려금)</div>
+          <div class="sch-date">09.01(화) ~ 09.30(수)</div>
+          <div class="sch-sub">인포21 신청</div>
+        </div>
+        <div class="scholarship-item">
+          <div class="sch-name">경희꿈도전장학</div>
+          <div class="sch-date">09.02(수) ~ 09.13(일)</div>
+          <div class="sch-sub">인포21 신청</div>
+        </div>
+        <div class="scholarship-item">
+          <div class="sch-name">국가장학금 2차 신청</div>
+          <div class="sch-date">08.12(수) ~ 09.09(화)</div>
+          <div class="sch-sub">한국장학재단 신청</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grade Filter Tabs -->
+    <div class="tabs-wrapper">
+      <button class="tab-btn active" onclick="filterGrade('all', this)">전체 학년 보기</button>
+      <button class="tab-btn" onclick="filterGrade('1', this)">1학년</button>
+      <button class="tab-btn" onclick="filterGrade('2', this)">2학년</button>
+      <button class="tab-btn" onclick="filterGrade('3', this)">3학년</button>
+      <button class="tab-btn" onclick="filterGrade('4', this)">4학년</button>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="cards-grid">
+
+      <!-- 1학년 -->
+      <div class="grade-card" data-grade="1">
+        <div class="card-top">
+          <div class="grade-title">🌱 팀 경희대 1학년</div>
+          <span class="grade-badge">신입생/기초</span>
+        </div>
+        <p class="grade-desc">중간·기말시험, 수강정정, 전공/트랙 신청, 기초대학영어 면제, 전과 신청 및 점프장학 포함</p>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="https://calendar.google.com/calendar/r?cid=685e98a8f75d789d497bf4b88bc0ba66466bfd6cbb38995b01ffcbefef8e9b5a@group.calendar.google.com" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
+            Google 캘린더에 바로 추가
+          </a>
+          <button class="btn btn-secondary" onclick="downloadICS(1)">
+            📥 iCal (.ics) 파일로 전체 일정 저장
+          </button>
+          <button class="btn btn-secondary" onclick="copyLink('https://calendar.google.com/calendar/r?cid=685e98a8f75d789d497bf4b88bc0ba66466bfd6cbb38995b01ffcbefef8e9b5a@group.calendar.google.com')">
+            🔗 1학년 구독 링크 복사
+          </button>
+        </div>
+        <div class="event-section-title">
+          <span>핵심 시험 및 일정 미리보기</span>
+          <span>구분</span>
+        </div>
+        <ul class="event-list">
+          <li class="event-item exam">
+            <div class="event-header-row">
+              <span class="event-date">10.20(화) ~ 10.26(월)</span>
+              <span class="event-pill">시험</span>
+            </div>
+            <div class="event-name">✏️ 2학기 중간시험 (전학년 공통)</div>
+          </li>
+          <li class="event-item exam">
+            <div class="event-header-row">
+              <span class="event-date">12.15(화) ~ 12.21(월)</span>
+              <span class="event-pill">시험</span>
+            </div>
+            <div class="event-name">✏️ 2학기 기말시험 (전학년 공통)</div>
+          </li>
+          <li class="event-item scholarship">
+            <div class="event-header-row">
+              <span class="event-date">09.21(월) ~ 10.09(금)</span>
+              <span class="event-pill">장학</span>
+            </div>
+            <div class="event-name">[장학] 2026-2학기 점프장학 신청 (인포21)</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">10.13(화) ~ 10.19(월)</span>
+              <span class="event-pill">학사</span>
+            </div>
+            <div class="event-name">전공(본/다/부전공) 및 트랙/마이크로디그리 신청</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">11.23(월) ~ 11.27(금)</span>
+              <span class="event-pill">학사</span>
+            </div>
+            <div class="event-name">기초교과대학영어 이수면제 신청</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">12.29(화) ~ 12.31(목)</span>
+              <span class="event-pill">성적</span>
+            </div>
+            <div class="event-name">2학기 성적 공시 및 정정</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">2027.01.05(화) ~ 01.11(월)</span>
+              <span class="event-pill">학사</span>
+            </div>
+            <div class="event-name">2027학년도 1학기 전과 신청</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 2학년 -->
+      <div class="grade-card" data-grade="2">
+        <div class="card-top">
+          <div class="grade-title">🌿 팀 경희대 2학년</div>
+          <span class="grade-badge">전공 탐색/심화</span>
+        </div>
+        <p class="grade-desc">중간·기말시험, 다전공/마이크로디그리 신청, 교직 복수전공, 기초영어 면제, 전과 및 장학금 포함</p>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="https://calendar.google.com/calendar/r?cid=8191b1c3091c076d227d8f8bd706e6139cae5410dff77eae6e3a2479e99a8a61@group.calendar.google.com" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
+            Google 캘린더에 바로 추가
+          </a>
+          <button class="btn btn-secondary" onclick="downloadICS(2)">
+            📥 iCal (.ics) 파일로 전체 일정 저장
+          </button>
+          <button class="btn btn-secondary" onclick="copyLink('https://calendar.google.com/calendar/r?cid=8191b1c3091c076d227d8f8bd706e6139cae5410dff77eae6e3a2479e99a8a61@group.calendar.google.com')">
+            🔗 2학년 구독 링크 복사
+          </button>
+        </div>
+        <div class="event-section-title">
+          <span>핵심 시험 및 일정 미리보기</span>
+          <span>구분</span>
+        </div>
+        <ul class="event-list">
+          <li class="event-item exam">
+            <div class="event-header-row">
+              <span class="event-date">10.20(화) ~ 10.26(월)</span>
+              <span class="event-pill">시험</span>
+            </div>
+            <div class="event-name">✏️ 2학기 중간시험 (전학년 공통)</div>
+          </li>
+          <li class="event-item exam">
+            <div class="event-header-row">
+              <span class="event-date">12.15(화) ~ 12.21(월)</span>
+              <span class="event-pill">시험</span>
+            </div>
+            <div class="event-name">✏️ 2학기 기말시험 (전학년 공통)</div>
+          </li>
+          <li class="event-item scholarship">
+            <div class="event-header-row">
+              <span class="event-date">09.21(월) ~ 10.09(금)</span>
+              <span class="event-pill">장학</span>
+            </div>
+            <div class="event-name">[장학] 2026-2학기 점프장학 신청 (인포21)</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">10.13(화) ~ 10.19(월)</span>
+              <span class="event-pill">학사</span>
+            </div>
+            <div class="event-name">전공(본/다/부전공) 및 트랙/마이크로디그리 신청</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">10.27(화) ~ 11.05(목)</span>
+              <span class="event-pill">학사</span>
+            </div>
+            <div class="event-name">교직 복수전공 이수 신청</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">11.23(월) ~ 11.27(금)</span>
+              <span class="event-pill">학사</span>
+            </div>
+            <div class="event-name">기초교과대학영어 이수면제 신청</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">12.29(화) ~ 12.31(목)</span>
+              <span class="event-pill">성적</span>
+            </div>
+            <div class="event-name">2학기 성적 공시 및 정정</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">2027.01.05(화) ~ 01.11(월)</span>
+              <span class="event-pill">학사</span>
+            </div>
+            <div class="event-name">2027학년도 1학기 전과 신청</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 3학년 -->
+      <div class="grade-card" data-grade="3">
+        <div class="card-top">
+          <div class="grade-title">🌳 팀 경희대 3학년</div>
+          <span class="grade-badge">진로/자격 준비</span>
+        </div>
+        <p class="grade-desc">중간·기말시험, 교직 실습 신청, 조기졸업 신청, 교원자격 무시험검정, 학점포기 및 장학금 포함</p>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="https://calendar.google.com/calendar/r?cid=94fe42a5891d16f522865fda4a752e6f2472255e0f562d9119381b5ce734b71d@group.calendar.google.com" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
+            Google 캘린더에 바로 추가
+          </a>
+          <button class="btn btn-secondary" onclick="downloadICS(3)">
+            📥 iCal (.ics) 파일로 전체 일정 저장
+          </button>
+          <button class="btn btn-secondary" onclick="copyLink('https://calendar.google.com/calendar/r?cid=94fe42a5891d16f522865fda4a752e6f2472255e0f562d9119381b5ce734b71d@group.calendar.google.com')">
+            🔗 3학년 구독 링크 복사
+          </button>
+        </div>
+        <div class="event-section-title">
+          <span>핵심 시험 및 일정 미리보기</span>
+          <span>구분</span>
+        </div>
+        <ul class="event-list">
+          <li class="event-item exam">
+            <div class="event-header-row">
+              <span class="event-date">10.20(화) ~ 10.26(월)</span>
+              <span class="event-pill">시험</span>
+            </div>
+            <div class="event-name">✏️ 2학기 중간시험 (전학년 공통)</div>
+          </li>
+          <li class="event-item exam">
+            <div class="event-header-row">
+              <span class="event-date">12.15(화) ~ 12.21(월)</span>
+              <span class="event-pill">시험</span>
+            </div>
+            <div class="event-name">✏️ 2학기 기말시험 (전학년 공통)</div>
+          </li>
+          <li class="event-item scholarship">
+            <div class="event-header-row">
+              <span class="event-date">09.21(월) ~ 10.09(금)</span>
+              <span class="event-pill">장학</span>
+            </div>
+            <div class="event-name">[장학] 2026-2학기 점프장학 신청 (인포21)</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">09.22(화) ~ 10.26(월)</span>
+              <span class="event-pill">교직</span>
+            </div>
+            <div class="event-name">2027학년도 교직 학교현장실습 신청</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">10.20(화) ~ 10.26(월)</span>
+              <span class="event-pill">학사</span>
+            </div>
+            <div class="event-name">조기졸업(학석사연계과정 포함) 신청</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">11.23(월) ~ 12.03(목)</span>
+              <span class="event-pill">교직</span>
+            </div>
+            <div class="event-name">교원자격 무시험검정 신청 (전기)</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">12.29(화) ~ 12.31(목)</span>
+              <span class="event-pill">성적</span>
+            </div>
+            <div class="event-name">2학기 성적 공시 및 정정</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 4학년 -->
+      <div class="grade-card" data-grade="4">
+        <div class="card-top">
+          <div class="grade-title">🎓 팀 경희대 4학년</div>
+          <span class="grade-badge">졸업/사회 진출</span>
+        </div>
+        <p class="grade-desc">중간·기말시험, 예비졸업사정, 최종 졸업사정, 학위수여식, 조기졸업 및 장학금 포함</p>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="https://calendar.google.com/calendar/r?cid=316a1c6443d5cf02cba227d2f3942d50627ca9338212acff250f10d019671e47@group.calendar.google.com" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
+            Google 캘린더에 바로 추가
+          </a>
+          <button class="btn btn-secondary" onclick="downloadICS(4)">
+            📥 iCal (.ics) 파일로 전체 일정 저장
+          </button>
+          <button class="btn btn-secondary" onclick="copyLink('https://calendar.google.com/calendar/r?cid=316a1c6443d5cf02cba227d2f3942d50627ca9338212acff250f10d019671e47@group.calendar.google.com')">
+            🔗 4학년 구독 링크 복사
+          </button>
+        </div>
+        <div class="event-section-title">
+          <span>핵심 시험 및 일정 미리보기</span>
+          <span>구분</span>
+        </div>
+        <ul class="event-list">
+          <li class="event-item exam">
+            <div class="event-header-row">
+              <span class="event-date">10.20(화) ~ 10.26(월)</span>
+              <span class="event-pill">시험</span>
+            </div>
+            <div class="event-name">✏️ 2학기 중간시험 (전학년 공통)</div>
+          </li>
+          <li class="event-item exam">
+            <div class="event-header-row">
+              <span class="event-date">12.15(화) ~ 12.21(월)</span>
+              <span class="event-pill">시험</span>
+            </div>
+            <div class="event-name">✏️ 2학기 기말시험 (전학년 공통)</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">09.30(수) ~ 10.08(목)</span>
+              <span class="event-pill">졸업</span>
+            </div>
+            <div class="event-name">⚠️ 2026학년도 전기 예비졸업사정 (필수)</div>
+          </li>
+          <li class="event-item scholarship">
+            <div class="event-header-row">
+              <span class="event-date">09.21(월) ~ 10.09(금)</span>
+              <span class="event-pill">장학</span>
+            </div>
+            <div class="event-name">[장학] 2026-2학기 점프장학 신청 (인포21)</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">12.29(화) ~ 12.31(목)</span>
+              <span class="event-pill">성적</span>
+            </div>
+            <div class="event-name">2학기 성적 공시 및 정정</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">2027.01.20(수) ~ 02.03(수)</span>
+              <span class="event-pill">졸업</span>
+            </div>
+            <div class="event-name">🎓 2026학년도 전기 졸업사정</div>
+          </li>
+          <li class="event-item">
+            <div class="event-header-row">
+              <span class="event-date">2027.02.17(수)</span>
+              <span class="event-pill">행사</span>
+            </div>
+            <div class="event-name">🎉 2026학년도 전기 학위수여식 (제75회)</div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Quick User Guide -->
+    <div class="guide-card">
+      <div class="guide-title">💡 캘린더 등록 안내</div>
+      <div class="guide-grid">
+        <div class="guide-item">
+          <strong>1. 구글 캘린더 바로 추가 시</strong>
+          'Google 캘린더에 바로 추가' 클릭 후 캘린더 추가 창이 열리면 [추가]를 누릅니다.
+        </div>
+        <div class="guide-item">
+          <strong>2. 권한 오류가 발생하거나 스마트폰 사용 시</strong>
+          'iCal (.ics) 파일로 전체 일정 저장' 버튼을 누르면 권한 설정 없이도 중간고사/기말고사 포함 모든 일정이 즉시 등록됩니다.
+        </div>
+        <div class="guide-item">
+          <strong>3. 친구/동기들에게 공유할 때</strong>
+          '구독 링크 복사'를 누르면 해당 학년 캘린더 링크가 바로 복사됩니다.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="toast">링크가 클립보드에 복사되었습니다!</div>
+
+  <script>
+    function filterGrade(grade, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.grade-card');
+      cards.forEach(card => {
+        if (grade === 'all' || card.getAttribute('data-grade') === grade) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function copyLink(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("구독 링크가 복사되었습니다!");
+      }).catch(() => {
+        showToast("복사에 실패했습니다. 수동으로 복사해주세요.");
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    const commonEvents = [
+      {title: "2026-2학기 개강 (학기 개시일)", start: "20260901", end: "20260902"},
+      {title: "수강신청 확인 및 정정", start: "20260901", end: "20260908"},
+      {title: "[장학] 우정장학(가계곤란/학업장려금) 신청 마감", start: "20260901", end: "20261001"},
+      {title: "[장학] 2026-2학기 점프장학 신청 (인포21)", start: "20260921", end: "20261010"},
+      {title: "학점포기 신청", start: "20260915", end: "20260922"},
+      {title: "휴학신청 마감", start: "20260921", end: "20260922"},
+      {title: "수강학점철회 신청", start: "20260922", end: "20260929"},
+      {title: "추석 연휴", start: "20260924", end: "20260927"},
+      {title: "계열별 전공과목 성적평가선택 신청", start: "20261001", end: "20261009"},
+      {title: "✏️ 2학기 중간시험", start: "20261020", end: "20261027"},
+      {title: "2학기 중간 강의평가", start: "20261027", end: "20261103"},
+      {title: "2027-1학기 재입학 신청", start: "20261110", end: "20261117"},
+      {title: "사회봉사학점 인정 신청", start: "20261123", end: "20261205"},
+      {title: "2학기 기말 강의평가", start: "20261201", end: "20261222"},
+      {title: "✏️ 2학기 기말시험", start: "20261215", end: "20261222"},
+      {title: "2학기 성적 열람(강의평가 실시자)", start: "20261215", end: "20261229"},
+      {title: "동계 계절학기 수업", start: "20261222", end: "20270114"},
+      {title: "동계 방학", start: "20261222", end: "20270301"},
+      {title: "성탄절", start: "20261225", end: "20261226"},
+      {title: "2학기 성적 공시 및 정정", start: "20261229", end: "20270101"},
+      {title: "신정", start: "20270101", end: "20270102"},
+      {title: "2027-1학기 복학신청", start: "20270106", end: "20270114"},
+      {title: "2027-1학기 수강희망과목담기", start: "20270118", end: "20270121"},
+      {title: "동계 집중휴무 (Eco-Friendly Campus Week)", start: "20270125", end: "20270130"},
+      {title: "2027-1학기 휴학 신청", start: "20270201", end: "20270217"},
+      {title: "2027-1학기 수강신청", start: "20270203", end: "20270212"},
+      {title: "설 연휴 및 대체휴일", start: "20270206", end: "20270210"},
+      {title: "2027-1학기 등록금 납부", start: "20270217", end: "20270225"}
+    ];
+
+    const gradeSpecificEvents = {
+      1: [
+        {title: "전공(본/다/부전공) 및 트랙/마이크로디그리 신청", start: "20261013", end: "20261020"},
+        {title: "기초교과대학영어 이수면제 신청", start: "20261123", end: "20261128"},
+        {title: "2027-1학기 전과 신청", start: "20270105", end: "20270112"}
+      ],
+      2: [
+        {title: "전공(본/다/부전공) 및 트랙/마이크로디그리 신청", start: "20261013", end: "20261020"},
+        {title: "교직 복수전공 이수 신청", start: "20261027", end: "20261106"},
+        {title: "기초교과대학영어 이수면제 신청", start: "20261123", end: "20261128"},
+        {title: "2027-1학기 전과 신청", start: "20270105", end: "20270112"}
+      ],
+      3: [
+        {title: "2027학년도 교직 학교현장실습 신청", start: "20260922", end: "20261027"},
+        {title: "조기졸업(학석사연계과정 포함) 신청", start: "20261020", end: "20261027"},
+        {title: "교원자격 무시험검정 신청(전기)", start: "20261123", end: "20261204"}
+      ],
+      4: [
+        {title: "2026학년도 전기 예비졸업사정", start: "20260930", end: "20261009"},
+        {title: "조기졸업(학석사연계과정 포함) 신청", start: "20261020", end: "20261027"},
+        {title: "교원자격 무시험검정 신청(전기)", start: "20261123", end: "20261204"},
+        {title: "2026학년도 전기 졸업사정", start: "20270120", end: "20270204"},
+        {title: "2026학년도 전기 학위수여식(75회)", start: "20270217", end: "20270218"}
+      ]
+    };
+
+    function downloadICS(grade) {
+      const events = [...commonEvents, ...(gradeSpecificEvents[grade] || [])];
+      let icsContent = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KyungHee Univ//Academic Calendar//KO\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nX-WR-CALNAME:팀 경희대 " + grade + "학년\r\nX-WR-TIMEZONE:Asia/Seoul\r\n";
+
+      events.forEach((ev, idx) => {
+        icsContent += "BEGIN:VEVENT\r\n";
+        icsContent += "UID:khu-" + grade + "-" + idx + "-" + ev.start + "@kyunghee.ac.kr\r\n";
+        icsContent += "SUMMARY:" + ev.title + "\r\n";
+        icsContent += "DTSTART;VALUE=DATE:" + ev.start + "\r\n";
+        icsContent += "DTEND;VALUE=DATE:" + ev.end + "\r\n";
+        icsContent += "DESCRIPTION:경희대학교 " + grade + "학년 학사 및 장학 일정\r\n";
+        icsContent += "STATUS:CONFIRMED\r\n";
+        icsContent += "END:VEVENT\r\n";
+      });
+
+      icsContent += "END:VCALENDAR";
+
+      const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8;" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.setAttribute("download", `경희대학교_${grade}학년_학사장학일정.ics`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast(`${grade}학년 캘린더(.ics) 파일이 다운로드되었습니다!`);
+    }
+  </script>
+</body>
+</html>
